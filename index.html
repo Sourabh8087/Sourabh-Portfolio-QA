@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sourabh Chavan — Software Tester &amp; QA Engineer</title>
+<meta name="description" content="Sourabh Chavan — Software Tester & QA Engineer specializing in Manual and Automation Testing with Playwright, Appium, and TypeScript.">
+<meta property="og:title" content="Sourabh Chavan — Software Tester & QA Engineer">
+<meta property="og:description" content="Manual and automation testing across web, mobile, and TV platforms — Playwright, Appium, TypeScript.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F5FE0'/%3E%3Ctext x='16' y='21' font-family='sans-serif' font-size='13' font-weight='700' fill='%23FFFFFF' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   TOKENS — clean, light, professional
+============================================ */
+:root {
+  --bg: #FFFFFF;
+  --bg-alt: #F6F8FB;
+  --surface: #FFFFFF;
+  --border: #E3E8EF;
+  --border-soft: #ECF0F4;
+
+  --text: #16202B;
+  --heading: #0F1720;
+  --muted: #55677A;
+  --dim: #8598AA;
+
+  --accent: #2F5FE0;
+  --accent-dark: #1F44B0;
+  --accent-soft: #EBF0FE;
+  --success: #12A150;
+  --success-soft: #E7F8EE;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --container: 1140px;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; color: var(--heading); }
+p { margin: 0; }
+strong { color: var(--heading); font-weight: 600; }
+
+.icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  vertical-align: -3px;
+  margin-right: 6px;
+}
+.icon-xs { width: 14px; height: 14px; margin-right: 5px; }
+.icon-sm { width: 16px; height: 16px; margin-right: 7px; }
+.icon-md { width: 24px; height: 24px; margin-right: 0; }
+
+.section-inner, .nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ============================================
+   NAV
+============================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-soft);
+  transition: box-shadow 0.25s ease;
+}
+.nav.scrolled { box-shadow: 0 8px 20px -16px rgba(15, 23, 32, 0.25); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-mark {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+}
+.nav-logo-text { font-weight: 600; font-size: 15.5px; color: var(--heading); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-size: 15px; color: var(--muted); font-weight: 500; transition: color 0.2s ease; position: relative; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -25px;
+  height: 2px;
+  background: var(--accent);
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.nav-cta .icon { margin-right: 7px; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px; height: 32px;
+  background: none; border: none;
+  cursor: pointer;
+}
+.nav-toggle span { display: block; height: 2px; background: var(--heading); border-radius: 2px; }
+
+/* ============================================
+   HERO
+============================================ */
+.hero { padding: 168px 0 100px; background: var(--bg-alt); border-bottom: 1px solid var(--border-soft); }
+.hero-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--success);
+  border: 1px solid #BFEBD1;
+  background: var(--success-soft);
+  padding: 7px 14px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(18, 161, 80, 0.45); }
+  50% { box-shadow: 0 0 0 5px rgba(18, 161, 80, 0); }
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title-accent { color: var(--accent); }
+
+.hero-sub { font-size: 18px; line-height: 1.65; color: var(--muted); max-width: 50ch; margin-bottom: 34px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 46px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn .icon { margin-right: 8px; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { transform: translateY(-2px); background: var(--accent-dark); box-shadow: 0 14px 28px -14px rgba(47, 95, 224, 0.45); }
+.btn-ghost { border-color: var(--border); color: var(--heading); background: #fff; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-wide { width: 100%; padding: 17px; margin-top: 40px; }
+
+.hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.hero-stat { display: flex; flex-direction: column; }
+.hero-stat-num { font-family: var(--font-display); font-weight: 700; font-size: 2rem; color: var(--accent); }
+.hero-stat-label { font-size: 13.5px; color: var(--dim); margin-top: 4px; }
+
+/* Focus / checklist card */
+.focus-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: 0 30px 60px -34px rgba(15, 23, 32, 0.25);
+}
+.focus-card-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+.focus-card-head .icon { color: var(--accent); margin-top: 3px; }
+.focus-card-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
+.focus-card-sub { font-size: 14px; color: var(--dim); }
+.focus-list { display: flex; flex-direction: column; gap: 4px; }
+.focus-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 4px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--dim);
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+.focus-list li:last-child { border-bottom: none; }
+.focus-list li::before {
+  content: "";
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.focus-list li::after { content: attr(data-label); }
+.focus-list li.checked { color: var(--heading); font-weight: 500; }
+.focus-list li.checked::before {
+  border-color: var(--success);
+  background: var(--success) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,12.5 10,16.5 18,7.5'/%3E%3C/svg%3E") center/14px no-repeat;
+}
+
+/* ============================================
+   SECTION SHARED
+============================================ */
+.section { padding: 96px 0; border-bottom: 1px solid var(--border-soft); }
+.section-tag {
+  display: inline-block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+.section-head h2 { font-size: clamp(1.85rem, 3vw, 2.4rem); line-height: 1.25; font-weight: 700; }
+
+/* ============================================
+   ABOUT
+============================================ */
+.about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; }
+.about-body p { color: var(--muted); margin-bottom: 22px; max-width: 66ch; font-size: 17px; }
+
+/* ============================================
+   EXPERIENCE — plain timeline
+============================================ */
+.timeline { margin-top: 44px; border-left: 2px solid var(--border); padding-left: 36px; }
+.timeline-item { position: relative; padding-bottom: 52px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-marker {
+  position: absolute;
+  left: -43px; top: 4px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--accent-soft);
+}
+.timeline-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+}
+.timeline-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.timeline-top h3 { font-size: 1.25rem; font-weight: 700; }
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.badge-current { color: var(--success); background: var(--success-soft); border: 1px solid #BFEBD1; }
+.timeline-meta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; color: var(--dim); font-size: 14px; margin-bottom: 18px; }
+.timeline-meta span { display: flex; align-items: center; }
+.timeline-date { font-weight: 600; color: var(--muted); }
+.timeline-content ul { display: flex; flex-direction: column; gap: 11px; }
+.timeline-content li { color: var(--muted); font-size: 15.5px; padding-left: 20px; position: relative; }
+.timeline-content li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* ============================================
+   PROJECTS
+============================================ */
+.project-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 22px 44px -28px rgba(15, 23, 32, 0.28); }
+.project-category { font-size: 12.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 10px; }
+.project-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.project-platforms { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.platform-badge {
+  display: inline-flex; align-items: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--bg-alt);
+  border: 1px solid var(--border-soft);
+  padding: 5px 11px;
+  border-radius: var(--radius-sm);
+}
+.platform-badge .icon { margin-right: 5px; color: var(--accent); }
+.project-points { display: flex; flex-direction: column; gap: 11px; margin-bottom: 24px; flex-grow: 1; }
+.project-points li { color: var(--muted); font-size: 14.5px; padding-left: 18px; position: relative; }
+.project-points li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--dim); }
+.project-stats { display: flex; gap: 24px; padding-top: 20px; border-top: 1px solid var(--border-soft); }
+.project-stat { display: flex; flex-direction: column; }
+.project-stat-num { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--accent); }
+.project-stat-label { font-size: 11.5px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.03em; margin-top: 4px; }
+
+/* ============================================
+   SKILLS
+============================================ */
+.skill-groups { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 24px; }
+.skill-group h3 { display: flex; align-items: center; font-size: 14.5px; color: var(--heading); font-weight: 700; margin-bottom: 15px; }
+.skill-group h3 .icon { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 9px; }
+.tag {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--bg-alt);
+  border: 1px solid var(--border-soft);
+  padding: 8px 13px;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+.tag:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); transform: translateY(-1px); }
+
+.edu-cert-grid { margin-top: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-top: 48px; border-top: 1px solid var(--border-soft); }
+.edu-block h3 { display: flex; align-items: center; font-size: 15px; color: var(--heading); font-weight: 700; margin-bottom: 22px; }
+.edu-block h3 .icon { color: var(--accent); }
+.plain-list { display: flex; flex-direction: column; gap: 18px; }
+.plain-list-title { display: block; font-size: 15px; color: var(--heading); font-weight: 500; }
+.plain-list-sub { display: block; font-size: 13.5px; color: var(--dim); margin-top: 3px; }
+
+/* ============================================
+   CONTACT
+============================================ */
+.contact { border-bottom: none; background: var(--bg-alt); }
+.contact-inner { text-align: left; }
+.contact-sub { color: var(--muted); max-width: 58ch; margin-top: 14px; font-size: 16px; }
+.contact-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.contact-icon { color: var(--accent); margin-bottom: 4px; }
+.contact-card:not(.contact-card-static):hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 18px 36px -24px rgba(15, 23, 32, 0.28); }
+.contact-label { font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.contact-value { font-size: 15.5px; color: var(--heading); font-weight: 500; word-break: break-word; }
+
+/* ============================================
+   FOOTER
+============================================ */
+.footer { padding: 34px; text-align: center; font-size: 13.5px; color: var(--dim); }
+
+/* ============================================
+   BACK TO TOP
+============================================ */
+.back-to-top {
+  position: fixed;
+  right: 24px; bottom: 24px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 24px -10px rgba(47, 95, 224, 0.5);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+  z-index: 40;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { background: var(--accent-dark); }
+.back-to-top .icon { margin: 0; transform: rotate(-90deg); width: 18px; height: 18px; }
+
+/* ============================================
+   REVEAL ANIMATION
+============================================ */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 34px; }
+  .project-grid { grid-template-columns: 1fr 1fr; }
+  .skill-groups { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .nav.open .nav-links {
+    display: flex;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    flex-direction: column;
+    background: #fff;
+    border-bottom: 1px solid var(--border-soft);
+    padding: 20px 32px;
+    gap: 18px;
+  }
+  .nav-logo-text { display: none; }
+  .hero { padding: 132px 0 64px; }
+  .hero-stats { gap: 28px; }
+  .section { padding: 68px 0; }
+  .project-grid { grid-template-columns: 1fr; }
+  .skill-groups { grid-template-columns: 1fr 1fr; }
+  .edu-cert-grid { grid-template-columns: 1fr; gap: 34px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .section-inner, .nav-inner { padding: 0 20px; }
+  .timeline { padding-left: 26px; }
+  .timeline-marker { left: -33px; }
+  .back-to-top { right: 16px; bottom: 16px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ICON SPRITE — hand-drawn, original, stroke-based -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><polyline points="8,12.5 11,15.5 16,9"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12,3 21,8 12,13 3,8"/><polyline points="3,13 12,18 21,13"/><polyline points="3,17.5 12,22.5 21,17.5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><line x1="10.5" y1="18.2" x2="13.5" y2="18.2"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="13" rx="1.5"/><line x1="8" y1="22" x2="16" y2="22"/><line x1="8" y1="2" x2="12" y2="6"/><line x1="16" y1="2" x2="12" y2="6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><polyline points="3,6.5 12,13 21,6.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3c1 0 2 3 2 4s-1.5 1.5-1.5 2.5C7.5 12 12 16.5 14.5 17.5c1 0 2.5-1.5 3.5-1.5s4 1 4 2c0 2-2 3.5-3.5 3.5C13 21.5 2.5 11 2.5 5.5 2.5 4 4 3 6 3z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14l4-4"/><path d="M8 17l-2.5 2.5A3.5 3.5 0 1 1 .5 14.5L4 11"/><path d="M16 7l2.5-2.5A3.5 3.5 0 1 1 23.5 9.5L20 13"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.5 7-12.5A7 7 0 0 0 5 9.5C5 14.5 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13"/><polyline points="7,11.5 12,16.5 17,11.5"/><line x1="4" y1="21" x2="20" y2="21"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13,5 20,12 13,19"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><polyline points="9,7 4,12 9,17"/><polyline points="15,7 20,12 15,17"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2.5" y="7.5" width="19" height="13" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><line x1="2.5" y1="13" x2="21.5" y2="13"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5h6a3 3 0 0 1 3 3v12A2.5 2.5 0 0 0 10.5 17H4z"/><path d="M20 4.5h-6a3 3 0 0 0-3 3v12A2.5 2.5 0 0 1 13.5 17H20z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12,2.5 15.1,9.2 22.5,10 17,15 18.5,22.3 12,18.5 5.5,22.3 7,15 1.5,10 8.9,9.2"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 2.5a5 5 0 0 0-6.4 6.4L2.5 14.5a2 2 0 0 0 2.8 2.8l5.6-5.6a5 5 0 0 0 6.4-6.4l-3 3-2.2-.4-.4-2.2 3-3z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 2.8-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M14.8 14.3c2.6.3 4.7 2.6 4.7 5.7"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Sourabh Chavan, home">
+      <span class="nav-logo-mark">SC</span>
+      <span class="nav-logo-text">Sourabh Chavan</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-nav>About</a>
+      <a href="#experience" data-nav>Experience</a>
+      <a href="#projects" data-nav>Projects</a>
+      <a href="#skills" data-nav>Skills</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+    <a class="nav-cta" href="assets/Sourabh_Chavan_Resume.pdf" download>
+      <svg class="icon icon-sm"><use href="#i-download"/></svg> Resume
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="status-chip"><span class="status-dot"></span>Open to opportunities</span>
+        <h1 class="hero-title">Making software reliable, <span class="hero-title-accent">one test at a time</span></h1>
+        <p class="hero-sub">Hi, I'm Sourabh Chavan — a Software Tester and QA Engineer based in Pune, India. I help teams catch issues before users do, through structured manual testing and Playwright/Appium automation across web, mobile, and TV platforms.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            View My Projects <svg class="icon icon-sm"><use href="#i-arrow"/></svg>
+          </a>
+          <a href="assets/Sourabh_Chavan_Resume.pdf" download class="btn btn-ghost">
+            <svg class="icon icon-sm"><use href="#i-download"/></svg> Download Resume
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="450" data-suffix="+">0</span>
+            <span class="hero-stat-label">Test Cases Executed</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="110" data-suffix="+">0</span>
+            <span class="hero-stat-label">Flows Automated</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="3" data-suffix="">0</span>
+            <span class="hero-stat-label">Platforms Covered</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="focus-card">
+        <div class="focus-card-head">
+          <svg class="icon icon-md"><use href="#i-shield"/></svg>
+          <div>
+            <h2 class="focus-card-title">What I Focus On</h2>
+            <p class="focus-card-sub">Core testing practices I apply on every project</p>
+          </div>
+        </div>
+        <ul class="focus-list" id="focusList">
+          <li data-label="Manual Testing"></li>
+          <li data-label="Automation with Playwright &amp; Appium"></li>
+          <li data-label="Regression &amp; Smoke Testing"></li>
+          <li data-label="API &amp; Data Validation"></li>
+          <li data-label="Defect Tracking &amp; Reporting"></li>
+          <li data-label="Cross-Platform Testing"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section-inner about-grid">
+      <div class="section-head">
+        <p class="section-tag">About</p>
+        <h2>About Me</h2>
+      </div>
+      <div class="about-body">
+        <p>I test enterprise web and mobile applications end to end — from writing test plans against business requirements, to building Playwright and Appium automation that keeps regression cycles reliable and fast. I manage the full defect lifecycle in <strong>JIRA</strong> and <strong>Azure DevOps</strong>, and use AI tooling to accelerate scripting, test data generation, and debugging without compromising coverage.</p>
+        <p>With a solid grounding in SDLC, STLC, and Agile methodology, I work equally well defining test strategy alongside business analysts and developers, and executing it independently under release deadlines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section experience" id="experience">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="section-tag">Experience</p>
+        <h2>Work Experience</h2>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Software Tester</h3>
+              <span class="badge badge-current">Current Role</span>
+            </div>
+            <p class="timeline-meta">
+              <span><svg class="icon icon-xs"><use href="#i-briefcase"/></svg>Softtestlab Technologies</span>
+              <span><svg class="icon icon-xs"><use href="#i-pin"/></svg>Pune, Maharashtra</span>
+              <span class="timeline-date">May 2026 — Present</span>
+            </p>
+            <ul>
+              <li>Execute manual and automated test cases across enterprise web and mobile applications every sprint, keeping releases on time and defect-minimized.</li>
+              <li>Design test plans, scenarios, and test data straight from business requirements, improving requirement-to-test traceability.</li>
+              <li>Run functional, regression, smoke, and retesting cycles to maintain consistent application quality across releases.</li>
+              <li>Build and maintain Playwright and Appium automation in TypeScript, reducing manual regression effort.</li>
+              <li>Log and track defects through their full lifecycle in JIRA and Azure DevOps, coordinating fixes directly with developers.</li>
+              <li>Apply AI tools to speed up automation scripting, troubleshooting, and test data generation.</li>
+              <li>Collaborate with developers, business analysts, and QA in Agile sprints to keep STLC compliance intact.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Software Tester Intern</h3>
+            </div>
+            <p class="timeline-meta">
+              <span><svg class="icon icon-xs"><use href="#i-briefcase"/></svg>Softtestlab Technologies</span>
+              <span><svg class="icon icon-xs"><use href="#i-pin"/></svg>Pune, Maharashtra</span>
+              <span class="timeline-date">Nov 2025 — May 2026</span>
+            </p>
+            <ul>
+              <li>Supported manual testing on enterprise applications, contributing to test case design and execution under senior QA guidance.</li>
+              <li>Got hands-on with Playwright and Appium automation frameworks and the full defect lifecycle.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section projects" id="projects">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="section-tag">Projects</p>
+        <h2>Featured Projects</h2>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project-card">
+          <p class="project-category">Enterprise Web, iOS &amp; TV Application</p>
+          <h3>Enterprise Funeral Management Suite</h3>
+          <div class="project-platforms">
+            <span class="platform-badge"><svg class="icon icon-xs"><use href="#i-globe"/></svg>Web</span>
+            <span class="platform-badge"><svg class="icon icon-xs"><use href="#i-mobile"/></svg>iOS</span>
+            <span class="platform-badge"><svg class="icon icon-xs"><use href="#i-tv"/></svg>TV</span>
+          </div>
+          <ul class="project-points">
+            <li>Designed and executed test cases across modules covering customer profiles, digital registries, invoicing, and billing workflows.</li>
+            <li>Tested system analytics dashboards for real-time reporting and data insights.</li>
+            <li>Verified real-time data synchronization across web, mobile, and TV platforms.</li>
+            <li>Automated end-to-end flows in Playwright, including CSV data handling and PDF extraction/validation.</li>
+          </ul>
+          <div class="project-stats">
+            <div class="project-stat"><span class="project-stat-num">150+</span><span class="project-stat-label">Test Cases</span></div>
+            <div class="project-stat"><span class="project-stat-num">10+</span><span class="project-stat-label">Modules</span></div>
+            <div class="project-stat"><span class="project-stat-num">10+</span><span class="project-stat-label">E2E Automated Flows</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-category">Role-Based Web Portal &amp; Mobile Apps</p>
+          <h3>Senior Care House Facility Application</h3>
+          <div class="project-platforms">
+            <span class="platform-badge"><svg class="icon icon-xs"><use href="#i-globe"/></svg>Web</span>
+            <span class="platform-badge"><svg class="icon icon-xs"><use href="#i-mobile"/></svg>Android &amp; iOS</span>
+          </div>
+          <ul class="project-points">
+            <li>Designed and executed test cases across modules covering role-based access for Admin, Staff, and Resident roles.</li>
+            <li>Built end-to-end automated tests spanning web, Android, and iOS.</li>
+            <li>Validated real-time messaging, push notifications, and emergency alert functionality.</li>
+            <li>Used AI-assisted techniques to generate boundary-value test scenarios, sharpening edge-case coverage.</li>
+          </ul>
+          <div class="project-stats">
+            <div class="project-stat"><span class="project-stat-num">200+</span><span class="project-stat-label">Test Cases</span></div>
+            <div class="project-stat"><span class="project-stat-num">12+</span><span class="project-stat-label">Modules</span></div>
+            <div class="project-stat"><span class="project-stat-num">120+</span><span class="project-stat-label">E2E Automated Flows</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-category">Role-Based Web Portal</p>
+          <h3>Job Placement &amp; Recruitment Web Application</h3>
+          <div class="project-platforms">
+            <span class="platform-badge"><svg class="icon icon-xs"><use href="#i-globe"/></svg>Web</span>
+          </div>
+          <ul class="project-points">
+            <li>Designed and executed test cases across modules covering candidate registration, job search, applications, and resume upload.</li>
+            <li>Verified automated email notifications and application status updates.</li>
+            <li>Validated analytics dashboards and recruitment metrics reporting.</li>
+          </ul>
+          <div class="project-stats">
+            <div class="project-stat"><span class="project-stat-num">70+</span><span class="project-stat-label">Test Cases</span></div>
+            <div class="project-stat"><span class="project-stat-num">7+</span><span class="project-stat-label">Modules</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section skills" id="skills">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="section-tag">Skills</p>
+        <h2>Skills &amp; Tools</h2>
+      </div>
+
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3><svg class="icon icon-sm"><use href="#i-shield"/></svg>Testing</h3>
+          <div class="tags">
+            <span class="tag">Manual Testing</span>
+            <span class="tag">Automation Testing</span>
+            <span class="tag">Test Planning</span>
+            <span class="tag">Test Case Design</span>
+            <span class="tag">Functional Testing</span>
+            <span class="tag">Regression Testing</span>
+            <span class="tag">Smoke Testing</span>
+            <span class="tag">End-to-End Testing</span>
+            <span class="tag">Test Strategy</span>
+            <span class="tag">Load Testing</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="icon icon-sm"><use href="#i-tool"/></svg>Automation Frameworks</h3>
+          <div class="tags">
+            <span class="tag">Playwright</span>
+            <span class="tag">Appium</span>
+            <span class="tag">Selenium</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="icon icon-sm"><use href="#i-code"/></svg>Languages &amp; Performance</h3>
+          <div class="tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Java</span>
+            <span class="tag">JMeter</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="icon icon-sm"><use href="#i-layers"/></svg>Tools &amp; Platforms</h3>
+          <div class="tags">
+            <span class="tag">Azure DevOps</span>
+            <span class="tag">JIRA</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="icon icon-sm"><use href="#i-users"/></svg>Methodologies</h3>
+          <div class="tags">
+            <span class="tag">SDLC</span>
+            <span class="tag">STLC</span>
+            <span class="tag">Agile Testing</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3><svg class="icon icon-sm"><use href="#i-spark"/></svg>AI-Assisted QA</h3>
+          <div class="tags">
+            <span class="tag">AI Scripting</span>
+            <span class="tag">Test Data Generation</span>
+            <span class="tag">AI-Assisted Debugging</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-cert-grid">
+        <div class="edu-block">
+          <h3><svg class="icon icon-sm"><use href="#i-book"/></svg>Education</h3>
+          <ul class="plain-list">
+            <li>
+              <span class="plain-list-title">B.Tech, Computer Science &amp; Information Technology</span>
+              <span class="plain-list-sub">Rajarambapu Institute of Technology, Sangli · June 2025</span>
+            </li>
+            <li>
+              <span class="plain-list-title">Class XII (PCM)</span>
+              <span class="plain-list-sub">Ligade Patil Junior College of Science, Karad · May 2021</span>
+            </li>
+            <li>
+              <span class="plain-list-title">Class X</span>
+              <span class="plain-list-sub">VGM Highschool, Vasantgad · May 2019</span>
+            </li>
+          </ul>
+        </div>
+        <div class="edu-block">
+          <h3><svg class="icon icon-sm"><use href="#i-star"/></svg>Certifications &amp; Achievements</h3>
+          <ul class="plain-list">
+            <li><span class="plain-list-title">Rubicon Soft Skills Development Certification</span></li>
+            <li><span class="plain-list-title">NCETET Research Paper Publication Certificate</span><span class="plain-list-sub">Bharathi Vidyapeeth, Kolhapur</span></li>
+            <li><span class="plain-list-title">Quantum National Project Competition — Runner Up</span></li>
+            <li><span class="plain-list-title">GATE 2025 — Qualified</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="section-inner contact-inner">
+      <div class="section-head">
+        <p class="section-tag">Contact</p>
+        <h2>Let's Connect</h2>
+        <p class="contact-sub">Open to Software Tester and QA Engineer roles where I can own test strategy end to end — from planning through automation to release sign-off.</p>
+      </div>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:sourabhchavan2317@gmail.com">
+          <svg class="icon icon-md contact-icon"><use href="#i-mail"/></svg>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">sourabhchavan2317@gmail.com</span>
+        </a>
+        <a class="contact-card" href="tel:+918766797997">
+          <svg class="icon icon-md contact-icon"><use href="#i-phone"/></svg>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+91 87667 97997</span>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/sourabh-chavan-sc8087" target="_blank" rel="noopener">
+          <svg class="icon icon-md contact-icon"><use href="#i-link"/></svg>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">/in/sourabh-chavan-sc8087</span>
+        </a>
+        <div class="contact-card contact-card-static">
+          <svg class="icon icon-md contact-icon"><use href="#i-pin"/></svg>
+          <span class="contact-label">Location</span>
+          <span class="contact-value">Pune, Maharashtra, India</span>
+        </div>
+      </div>
+
+      <a href="assets/Sourabh_Chavan_Resume.pdf" download class="btn btn-primary btn-wide">
+        <svg class="icon icon-sm"><use href="#i-download"/></svg> Download Full Resume (PDF)
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Sourabh Chavan. All rights reserved.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg class="icon"><use href="#i-arrow"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
