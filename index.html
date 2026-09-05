@@ -79,6 +79,22 @@
   .hero h1{ font-family:var(--display); font-weight:700; font-size:clamp(34px,5vw,58px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 22px; }
   .hero .lede{ color:var(--muted); font-size:17px; max-width:480px; margin:0 0 34px; }
   .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:46px; }
+  .eyebrow{ display:inline-block; font-size:12px; font-weight:700; letter-spacing:.14em; color:var(--teal); margin-bottom:18px; }
+  .qa-hero-card{ background:linear-gradient(155deg, var(--panel-soft), var(--panel)); border:1px solid var(--border-strong); border-radius:20px; padding:24px; box-shadow:0 30px 70px -45px rgba(0,0,0,.8); }
+  .qa-card-top{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding-bottom:18px; border-bottom:1px solid var(--border); }
+  .qa-card-title{ font-size:11px; letter-spacing:.12em; color:var(--dim); font-weight:700; }
+  .qa-card-main{ display:flex; gap:16px; align-items:center; padding:28px 0 24px; }
+  .qa-icon{ width:62px; height:62px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:var(--violet-soft); border:1px solid rgba(133,119,246,.35); color:var(--violet); font-family:var(--display); font-size:22px; font-weight:700; flex-shrink:0; }
+  .qa-card-main strong{ font-family:var(--display); font-size:19px; }
+  .qa-card-main p{ color:var(--muted); font-size:13px; margin:5px 0 0; }
+  .qa-stack{ display:flex; flex-wrap:wrap; gap:8px; }
+  .qa-stack span{ font-size:12px; color:var(--text); background:var(--bg-2); border:1px solid var(--border); padding:7px 10px; border-radius:8px; }
+  .qa-platforms{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:22px; padding-top:20px; border-top:1px solid var(--border); }
+  .qa-platforms div{ display:flex; flex-direction:column; gap:2px; }
+  .qa-platforms strong{ font-family:var(--display); font-size:20px; }
+  .qa-platforms span{ color:var(--dim); font-size:11px; }
+  @media (max-width:520px){ .qa-platforms{ grid-template-columns:1fr; } }
+
   .btn{ font-family:var(--sans); font-weight:600; font-size:14.5px; padding:14px 24px; border-radius:999px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:transform .12s ease, filter .12s ease, background .12s ease, border-color .12s ease; }
   .btn-primary{ background:var(--violet); color:#0c0d11; }
   .btn-primary:hover{ filter:brightness(1.1); transform:translateY(-1px); }
@@ -194,6 +210,14 @@
   .form-submit{ width:100%; border:none; cursor:pointer; justify-content:center; margin-top:6px; }
   .form-note{ font-size:12px; color:var(--dim); margin-top:14px; }
 
+  .process-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .process-step{ background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:22px; }
+  .process-step span{ color:var(--violet); font-family:var(--display); font-size:12px; font-weight:700; }
+  .process-step strong{ display:block; font-family:var(--display); font-size:17px; margin:12px 0 6px; }
+  .process-step p{ color:var(--muted); font-size:13px; margin:0; }
+  @media (max-width:760px){ .process-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .process-grid{ grid-template-columns:1fr; } }
+
   footer{ padding:36px 0; }
   .footer-row{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--dim); }
   .footer-row a{ text-decoration:none; color:var(--dim); }
@@ -235,58 +259,40 @@
     <div class="blob blob-3"></div>
     <div class="wrap hero-grid">
       <div>
-        <h1>Break it before your users do.</h1>
-        <p class="lede">Software Tester &amp; QA Automation Engineer building manual and automated test coverage across web, Android, iOS and TV — with Playwright, Appium and TypeScript.</p>
+        <div class="eyebrow">SOFTWARE TESTER · QA AUTOMATION ENGINEER</div>
+        <h1>Sourabh Chavan</h1>
+        <p class="lede">I build reliable manual and automated test coverage for enterprise web and mobile applications — using Playwright, Appium, TypeScript and a strong focus on real-world edge cases.</p>
         <div class="hero-ctas">
-          <a href="#projects" class="btn btn-primary">See my work</a>
-          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="assets/Sourabh_Chavan_Resume.pdf" download class="btn btn-ghost">Download resume</a>
+          <a href="https://github.com/Sourabh8087/Sourabh-Portfolio-QA" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
         </div>
         <div class="stat-row">
-          <div class="stat"><div class="num">800+</div><div class="label">test cases authored</div></div>
-          <div class="stat"><div class="num">3</div><div class="label">enterprise platforms tested</div></div>
-          <div class="stat"><div class="num">4</div><div class="label">platforms: Web, Android, iOS, TV</div></div>
+          <div class="stat"><div class="num">1+ Year</div><div class="label">QA experience</div></div>
+          <div class="stat"><div class="num">Web + Mobile</div><div class="label">cross-platform testing</div></div>
+          <div class="stat"><div class="num">Playwright + Appium</div><div class="label">automation stack</div></div>
         </div>
       </div>
 
-      <div class="dash">
-        <div class="dash-bar">
-          <span class="dash-dot"></span><span class="dash-dot"></span><span class="dash-dot"></span>
-          <span class="dash-title">quality-dashboard</span>
+      <div class="qa-hero-card">
+        <div class="qa-card-top">
+          <span class="qa-card-title">QA ENGINEERING</span>
           <span class="dash-badge"><span class="pulse"></span>Open to work</span>
         </div>
-        <div class="dash-body">
-          <div class="ring-wrap">
-            <svg width="108" height="108" viewBox="0 0 108 108">
-              <circle cx="54" cy="54" r="46" fill="none" stroke="var(--border)" stroke-width="10"/>
-              <circle id="ringProgress" cx="54" cy="54" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289" transform="rotate(-90 54 54)"/>
-              <defs>
-                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="var(--violet)"/>
-                  <stop offset="100%" stop-color="var(--teal)"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <div class="ring-num">98% pass</div>
-            <div class="ring-label">last regression run</div>
-          </div>
-          <div class="dash-rows">
-            <div class="dash-row">
-              <div class="rtop"><span class="rname">Regression suite</span><span class="rval">214 / 218</span></div>
-              <div class="bar-track"><div class="bar-fill" data-fill="96"></div></div>
-            </div>
-            <div class="dash-row">
-              <div class="rtop"><span class="rname">Smoke tests</span><span class="rval">42 / 42</span></div>
-              <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
-            </div>
-            <div class="dash-row">
-              <div class="rtop"><span class="rname">E2E automation</span><span class="rval">156 / 162</span></div>
-              <div class="bar-track"><div class="bar-fill" data-fill="96"></div></div>
-            </div>
+        <div class="qa-card-main">
+          <div class="qa-icon">QA</div>
+          <div>
+            <strong>Quality through coverage</strong>
+            <p>Manual testing → automation → defect tracking → regression</p>
           </div>
         </div>
-        <div class="dash-foot">
-          <span>Playwright · Appium · TypeScript</span>
-          <span>Updated this sprint</span>
+        <div class="qa-stack">
+          <span>Manual Testing</span><span>Playwright</span><span>Appium</span><span>TypeScript</span><span>JIRA</span><span>Azure DevOps</span>
+        </div>
+        <div class="qa-platforms">
+          <div><strong>4</strong><span>platforms</span></div>
+          <div><strong>3</strong><span>enterprise apps</span></div>
+          <div><strong>800+</strong><span>test cases</span></div>
         </div>
       </div>
     </div>
@@ -433,11 +439,11 @@
       <div class="project-grid">
         <div class="project-card">
           <h3>Enterprise Funeral Management Suite</h3>
-          <p class="desc">Web portal, iOS apps and a TV application for a multi-client admin platform — covering customer profiles, digital registries, invoicing and billing.</p>
+          <p class="desc">Web portal, iOS apps and a TV application for a multi-client funeral-management platform — covering customer profiles, digital registries, floral offerings, guestbook, invoicing, billing and payments.</p>
           <div class="project-metrics">
             <span>300+ test cases</span><span>10+ modules</span>
           </div>
-          <p class="desc">Verified billing and pricing logic, real-time analytics sync, offline-to-online data handling with database integrity checks, and app update flows. Automated 10+ end-to-end flows in Playwright, including CSV handling and PDF extraction.</p>
+          <p class="desc">Tested payment flows, billing calculations, client-specific pricing and invoice generation, plus analytics sync. Verified offline data, synchronization, backup/restore, database files, app updates and PDF/CSV outputs. Automated 10+ Playwright E2E flows.</p>
           <div class="project-tags">
             <span>Web</span><span>iOS</span><span>TV</span><span>Playwright</span>
           </div>
@@ -466,6 +472,24 @@
             <span>Web</span><span>Functional QA</span><span>Regression</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QA PROCESS ================= -->
+  <section id="qa-process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>My QA process</h2>
+        <p>A structured testing workflow that connects requirements to release confidence.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><span>01</span><strong>Requirements</strong><p>Understand business rules, user roles and acceptance criteria.</p></div>
+        <div class="process-step"><span>02</span><strong>Test Planning</strong><p>Define scope, scenarios, test data and coverage priorities.</p></div>
+        <div class="process-step"><span>03</span><strong>Test Execution</strong><p>Run functional, smoke, regression, E2E and cross-platform tests.</p></div>
+        <div class="process-step"><span>04</span><strong>Automation</strong><p>Build maintainable Playwright and Appium coverage for repeatable flows.</p></div>
+        <div class="process-step"><span>05</span><strong>Defect Tracking</strong><p>Report clear defects in JIRA or Azure DevOps with evidence.</p></div>
+        <div class="process-step"><span>06</span><strong>Retest &amp; Release</strong><p>Verify fixes, run regression and validate release readiness.</p></div>
       </div>
     </div>
   </section>
@@ -513,7 +537,7 @@
         <div class="contact-channels">
           <a class="channel" href="mailto:sourabhchavan2317@gmail.com"><span class="k">Email</span>sourabhchavan2317@gmail.com</a>
           <a class="channel" href="tel:+918766797997"><span class="k">Phone</span>+91 87667 97997</a>
-          <a class="channel" href="#" id="linkedinLink"><span class="k">LinkedIn</span>linkedin.com/in/sourabh-chavan</a>
+          <a class="channel" href="#" id="linkedinLink"><span class="k">LinkedIn</span>linkedin.com/in/sourabh-chavan-sc8087</a>
           <a class="channel" href="#" onclick="return false;"><span class="k">Based in</span>Pune, Maharashtra, India</a>
         </div>
       </div>
@@ -553,7 +577,7 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('linkedinLink').setAttribute('href', 'https://www.linkedin.com/in/your-profile');
+  document.getElementById('linkedinLink').setAttribute('href', 'https://www.linkedin.com/in/sourabh-chavan-sc8087');
 
   const form = document.getElementById('contactForm');
   form.addEventListener('submit', function(e){
